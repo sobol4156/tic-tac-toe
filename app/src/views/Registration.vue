@@ -1,34 +1,74 @@
 <template>
   <div class="form">
     <div class="block-form">
-      <div><button @click="backToStart" class="back-btn">Вернуться</button></div>
+      <div>
+        <button @click="backToStart" class="back-btn">Вернуться</button>
+      </div>
       <div class="info-blocks">
         <h1>Регистрация</h1>
-        <div class="data-fields">
-          <label for="name"><span>Как вас зовут?</span></label>
-          <input type="text" />
-          <label for="name"><span>Адрес электронной почты</span></label>
-          <input type="text" />
-          <label for="name"><span>Пароль:</span></label>
-          <input type="password" />
-          <label for="name"><span>Подтвердить пароль:</span></label>
-          <input type="password" />
-        </div>
-        <button class="btn">Зарегистрироваться</button>
+        <form>
+          <div class="data-fields">
+            <label for="name"><span>Как вас зовут?</span></label>
+            <input type="text" name="name" />
+            <label for="email"><span>Адрес электронной почты</span></label>
+            <input type="text" name="email" />
+            <label for="password"><span>Пароль:</span></label>
+            <input type="password" name="password" />
+            <label for="password_confirmation"
+              ><span>Подтвердить пароль:</span></label
+            >
+            <input type="password" name="password_confirmation" />
+          </div>
+          <button @click="postData" type="submit" class="btn">
+            Зарегистрироваться
+          </button>
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Registration",
   methods: {
     backToStart() {
       this.$router.push("/");
     },
+    async postData(event) {
+      event.preventDefault();
+      const csrfToken =
+        "eyJpdiI6InJSVitOR2JFV005dGxKZEZkblV0Zmc9PSIsInZhbHVlIjoiMlhLaUNiVHIxektTQXdDUENLaXJ3d2MvMzRIY3dVb2xudFQrbzdOdGR5MU9UTW43ekwwOWEyOWVBdHRtUEpnN2FpNU53TW9Cci9BbHVxdjQ4NGgzbC9EK1ViZVI4TjJMdTUxZDRoSGpzM2JOQXRkODd2Q2pqdkNReGVIdE05Ti8iLCJtYWMiOiJjZDQ2NjY0MjRjZTM0OWI5NDg1NzM5NTBiNWY5ODUzZDY3OTk2NWU3ZTdmMzVhMGQ3YTFjODM0N2VhNDY2MjFlIiwidGFnIjoiIn0%3D";
+      const myHeaders = new Headers();
+      myHeaders.append("Accept", "application/json");
+      myHeaders.append("Host", "localhost:3000");
+      myHeaders.append("X-CSRF-TOKEN", csrfToken);
+      
+
+      const formData = new FormData();
+      formData.append("name", "max");
+      formData.append("email", "admin@admin.admin2");
+      formData.append("password", "12345678");
+      formData.append("password_confirmation", "12345678");
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formData,
+        redirect: "follow",
+      };
+
+      // await fetch("http://127.0.0.1:8000/sanctum/csrf-cookie").then((result) =>
+      //   console.log(result.headers.get("Set-Cookie"))
+      // );
+
+      await fetch("http://127.0.0.1:8000/api/register", requestOptions)
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
+    },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
