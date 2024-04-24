@@ -1,8 +1,13 @@
 <template>
   <div class="game-board">
-    <div v-if="winnerGame">
+    <!-- Логика победы или ничьи -->
+    <div v-if="winnerGame === 'X' || winnerGame=== 'O'">
       <h2>Победили {{ winnerGame }}</h2>
     </div>
+    <div v-if="winnerGame === 'Ничья'">
+      <h2>{{ winnerGame }}</h2> 
+    </div>
+    <!-- Рендер игрового поля -->
     <div v-for="(row, rowIndex) in board" :key="rowIndex" class="board-row">
       <div
         v-for="(cell, colIndex) in row"
@@ -13,6 +18,7 @@
         {{ cell === "X" ? "X" : cell === "O" ? "O" : "" }}
       </div>
     </div>
+    <!-- Кнопки возврата в меню или restart -->
     <div v-if="winnerGame" class="btn-winner">
       <button @click="backToStart" class="btn-menu">
         Вернуться в главное меню
@@ -23,7 +29,6 @@
 </template>
 
 <script>
-import router from "@/routes/router";
 
 export default {
   name: "Game",
@@ -68,7 +73,7 @@ export default {
         [0, 4, 8],
         [2, 4, 6],
       ];
-
+      // Проверка победы
       for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (
@@ -80,7 +85,20 @@ export default {
         ) {
           return this.board[Math.floor(a / 3)][a % 3];
         }
+        
       }
+      // Проверка пустых клеток
+  let emptyCells = 0;
+  for (let row of this.board) {
+    for (let cell of row) {
+      if (cell === "") {
+        emptyCells++;
+      }
+    }
+  }
+  if (emptyCells === 0) {
+    return "Ничья";
+  }
 
       return null;
     },
