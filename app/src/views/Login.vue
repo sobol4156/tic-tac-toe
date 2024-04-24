@@ -10,7 +10,7 @@
             <input type="text" />
             <label for="name"><span>Пароль:</span></label>
             <input type="password" />
-
+            <a href="#" class="forgot-password">Забыли пароль?</a>
           </div>
           <button>Войти</button>
         </div>
@@ -38,7 +38,9 @@ export default{
   height: 100vh;
 
   .block-form {
+    position: relative;
     margin: 0 20px;
+    padding: 30px 0;
     width: 620px;
     height: 40vh;
     border: 1px solid white;
@@ -63,34 +65,19 @@ export default{
         font-size: 16px;
         font-weight: bold;
         color: #fff;
-        background-color: #4caf50;
+        background-color: #242424;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         outline: none;
         position: relative;
         overflow: hidden;
-        transition: background-color 0.3s, box-shadow 0.3s;
+        transition: all ease 0.3s;
       }
-      button::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 300%;
-        height: 300%;
-        background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        transition: width 0.5s, height 0.5s, background-color 0.5s;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-      }
-      button:hover::before {
-        width: 0;
-        height: 0;
-      }
+      
       button:hover {
-        background-color: #45a049;
+        color: #242424;
+        background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
     }
@@ -112,28 +99,41 @@ export default{
         border-radius: 10px;
         padding-left: 10px;
       }
+      .forgot-password {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #ccc;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .forgot-password:hover {
+        color: #fff;
+      }
     }
   }
 }
 .back-btn {
   position: absolute;
-  
+  top: 0;
   
   display: inline-block;
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  background-color: #be6f01;
+  background-color: #242424;
   border: none;
   border-radius: 15px 5px 5px 5px;
   cursor: pointer;
   outline: none;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: all ease 0.3s;
 }
 
 .back-btn:hover {
-  background-color: #ff6a2f;
+  color: #242424;
+  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 </style>

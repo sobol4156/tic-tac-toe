@@ -3,6 +3,7 @@ import Game from "@/views/Game.vue"; // Путь к вашему компоне�
 import Start from "@/views/Start.vue";
 import Registration from "@/views/Registration.vue";
 import Login from "@/views/Login.vue";
+import Options from '@/views/Options.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/options",
+    name: "Options",
+    component: Options,
   },
 ];
 
