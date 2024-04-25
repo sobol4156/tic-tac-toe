@@ -1,11 +1,11 @@
 <template>
-  <div class="game-board">
+  <div class="game-board flex flex-col items-center justify-center h-full">
     <!-- Логика победы или ничьи -->
     <div v-if="winnerGame === 'X' || winnerGame=== 'O'">
-      <h2>Победили {{ winnerGame }}</h2>
+      <h2 class="text-3xl">Победили {{ winnerGame }}</h2>
     </div>
     <div v-if="winnerGame === 'Ничья'">
-      <h2>{{ winnerGame }}</h2> 
+      <h2 class="text-3xl">{{ winnerGame }}</h2> 
     </div>
     <!-- Рендер игрового поля -->
     <div v-for="(row, rowIndex) in board" :key="rowIndex" class="board-row flex">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- Кнопки возврата в меню или restart -->
-    <div v-if="winnerGame" class="btn-winner">
+    <div v-if="winnerGame" class="btn-winner flex m-8 gap-8">
       <ButtonBack @click="backToStart" :class="{'gameButtonBack': true}">
        Главное меню
       </ButtonBack>
@@ -124,16 +124,7 @@ export default {
 </script>
 
 <style scoped>
-.game-board {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-
-
+/* Настройки поля */
 .board-square {
   background-color: rgb(175, 169, 169);
   width: 150px;
@@ -148,14 +139,6 @@ export default {
   font-size: 96px; /* размер крестиков и ноликов */
   cursor: pointer;
 }
-
-/* Кнопки после победы */
-.btn-winner {
-  margin: 30px;
-  display: flex;
-  gap: 30px;
-}
-
 
 /* Адаптивка под размерность поля и расположения кнопок */
 @media(width < 480px){

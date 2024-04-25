@@ -1,18 +1,24 @@
 <template>
-  <div class="form">
+  <div class="form flex justify-center items-center h-screen">
     <div class="block-form">
-      <div><ButtonBack @click="backToStart" :class="{customRadius: true, 'back-btn': true}">Вернуться</ButtonBack></div>
-      <div class="info-blocks">
-        <h1>Регистрация</h1>
-        <div class="data-fields">
+      <div>
+        <ButtonBack
+          @click="backToStart"
+          :class="{ customRadius: true, 'back-btn': true }"
+          >Вернуться</ButtonBack
+        >
+      </div>
+      <div class="info-blocks flex flex-col items-center py-2.5 text-xl">
+        <h1 class="text-4xl">Регистрация</h1>
+        <div class="data-fields flex flex-col m-3.5">
           <label for="name"><span>Как вас зовут?</span></label>
-          <InputAuth :class="{'inputClass': true}" type="text" />
+          <InputAuth :class="{ inputClass: true }" type="text" />
           <label for="name"><span>Адрес электронной почты</span></label>
-          <InputAuth :class="{'inputClass': true}" type="text" />
+          <InputAuth :class="{ inputClass: true }" type="text" />
           <label for="name"><span>Пароль:</span></label>
-          <InputAuth :class="{'inputClass': true}" type="password" />
+          <InputAuth :class="{ inputClass: true }" type="password" />
           <label for="name"><span>Подтвердить пароль:</span></label>
-          <InputAuth :class="{'inputClass': true}" type="password" />
+          <InputAuth :class="{ inputClass: true }" type="password" />
         </div>
         <ButtonSave class="btn">Зарегистрироваться</ButtonSave>
       </div>
@@ -21,9 +27,9 @@
 </template>
 
 <script>
-import ButtonBack from '@/shared/UI/ButtonBack.vue';
-import ButtonSave from '@/shared/UI/ButtonSave.vue'
-import InputAuth from '@/shared/UI/InputAuth.vue'
+import ButtonBack from "@/shared/UI/ButtonBack.vue";
+import ButtonSave from "@/shared/UI/ButtonSave.vue";
+import InputAuth from "@/shared/UI/InputAuth.vue";
 
 export default {
   name: "Registration",
@@ -32,58 +38,29 @@ export default {
       this.$router.push("/");
     },
   },
-  components:{
+  components: {
     ButtonBack,
     ButtonSave,
-    InputAuth
-  }
-}
+    InputAuth,
+  },
+};
 </script>
 
 <style scoped lang="scss">
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.block-form {
+  position: relative;
+  padding: 30px 0;
+  margin: 0 20px;
+  width: 640px;
+  height: 640px;
+  border: 1px solid white;
+  border-radius: 15px;
+  box-shadow: 6px 5px 8px 0px rgb(0, 0, 0, 0.4);
+  background-color: #4b4848;
 
-  .block-form {
-    position: relative;
-    padding: 30px 0;
-    margin: 0 20px;
-    width: 640px;
-    height: 640px;
-    border: 1px solid white;
-    border-radius: 15px;
-    box-shadow: 6px 5px 8px 0px rgb(0, 0, 0, 0.4);
-    background-color: #4b4848;
-
-    .info-blocks {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-
-      h1 {
-        font-size: 40px;
-      }
-
-    }
-    .data-fields {
-      display: flex;
-      flex-direction: column;
-      margin: 15px;
-      height: 380px;
-      font-size: 20px;
-
-      label {
-        text-align: center;
-        padding: 10px;
-      }
-
-    }
+  label {
+    text-align: center;
+    padding: 10px;
   }
 }
-
-
 </style>

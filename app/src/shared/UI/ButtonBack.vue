@@ -52,13 +52,13 @@ export default {
   color: #fff;
   background-color: #242424;
   border: none;
-
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+  transition: all ease 0.3s;
 }
 .gameButtonBack:hover {
   color: #242424;

@@ -34,6 +34,7 @@
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    transition: all ease 0.3s;
   }
   .gameButtonBack:hover {
     color: #242424;
