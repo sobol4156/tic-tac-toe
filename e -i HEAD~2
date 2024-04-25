@@ -1,0 +1,41 @@
+[33mcommit dc25f21d0168fe06a11dd7a8b18b20c445e36f68[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Thu Apr 25 03:01:55 2024 +0300
+
+    intermediate saving
+
+[33mcommit 4120cb95a5b7920a7a288b38e9c3eaec701e5083[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Thu Apr 25 03:01:54 2024 +0300
+
+    intermediate saving
+
+[33mcommit c76df200bc6cf2759156b2ac7c38e252f6dbb06c[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Wed Apr 24 20:30:11 2024 +0300
+
+    new design app
+
+[33mcommit 92a0605e5ad5b0722a8c06545c40073e2da5d92e[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Wed Apr 24 15:56:30 2024 +0300
+
+    add logic draw in game
+
+[33mcommit f47fd31e1e6e8d86fa1b7c437dee83e0a220f759[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Mon Apr 22 14:02:45 2024 +0300
+
+    add logic game and routes
+
+[33mcommit 3b3d9d65bb8a4dcfa9ff867ca79481fa5a39e088[m[33m ([m[1;32mapiTest[m[33m)[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Sun Apr 14 01:03:40 2024 +0300
+
+    add registration and login + routes
+
+[33mcommit fcdf969530372c9776b3e3fbc5cecb7da329a596[m
+Author: Sobol <sobol4156@gmail.com>
+Date:   Fri Apr 12 21:25:29 2024 +0300
+
+    menu start and options

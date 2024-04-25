@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Game from "@/views/mainMenu/Game/Game.vue"; 
-import Start from "@/views/mainMenu/Start.vue";
 import Registration from "@/views/Auth/Registration.vue";
 import Login from "@/views/Auth/Login.vue";
 import Options from '@/views/mainMenu/optionsGame/Options.vue'
+import Menu from "@/views/mainMenu/Menu.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Start",
-    component: Start,
+    name: "Menu",
+    component: Menu,
   },
   {
     path: "/game",

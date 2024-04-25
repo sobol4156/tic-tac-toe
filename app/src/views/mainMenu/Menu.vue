@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="login-screen">
+    <div class="login-screen flex justify-center">
       <div class="login-buttons">
         <button class="login-button" @click="login">Войти</button>
         <button class="register-button" @click="register">
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Start",
   data() {
@@ -73,8 +74,8 @@ export default {
 <style scoped lang="scss">
 .login-screen {
   position: relative;
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
   align-items: center;
   height: 100vh;
 }
@@ -114,13 +115,14 @@ export default {
   margin: 10px;
   border-radius: 20px; 
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   font-size: 24px; 
-  color: #333; 
+  color: #b4b0b0; 
 }
 
 .mode-option:hover {
   background-color: #ddd;
+  color: #242424;
 }
 
 .mode-option.active {
