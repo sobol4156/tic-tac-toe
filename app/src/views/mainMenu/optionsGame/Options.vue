@@ -2,7 +2,7 @@
   <div class="form">
     <div class="block-form">
       <div>
-        <button @click="backToStart" class="back-btn">Вернуться</button>
+        <ButtonBack @click="backToStart" :class="{'back-btn': true}">Вернуться</ButtonBack>
       </div>
       <div class="info-blocks">
         <h1>Настройки</h1>
@@ -31,12 +31,17 @@
         </div>
         <button @click="saveSettings" class="btn">Сохранить</button>
       </div>
+      
     </div>
   </div>
 </template>
 
 <script>
+import ButtonBack from '@/shared/UI/ButtonBack.vue';
+
+
 export default {
+
   name: "Options",
   data() {
     return {
@@ -54,6 +59,9 @@ export default {
       // Логика сохранения настроек...
     },
   },
+  components: {
+    ButtonBack
+  }
 };
 </script>
 
@@ -134,26 +142,5 @@ export default {
   }
 }
 
-.back-btn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #242424;
-  border: none;
-  border-radius: 8px 5px 5px 5px;
-  cursor: pointer;
-  outline: none;
-  transition: all ease 0.3s;
-}
 
-.back-btn:hover {
-  color: #242424;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 </style>

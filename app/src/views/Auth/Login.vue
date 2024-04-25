@@ -2,7 +2,7 @@
   <div>
     <div class="form">
       <div class="block-form">
-        <div><button @click="backToStart" class="back-btn">Вернуться</button></div>
+        <div><ButtonBack @click="backToStart" :class="{customRadius: true, 'back-btn': true}">Вернуться</ButtonBack></div>
         <div class="info-blocks">
           <h1>Вход</h1>
           <div class="data-fields">
@@ -12,7 +12,7 @@
             <input type="password" />
             <a href="#" class="forgot-password">Забыли пароль?</a>
           </div>
-          <button>Войти</button>
+          <ButtonSave>Войти</ButtonSave>
         </div>
       </div>
     </div>
@@ -20,12 +20,19 @@
 </template>
 
 <script>
+import ButtonBack from '@/shared/UI/ButtonBack.vue';
+import ButtonSave from '@/shared/UI/ButtonSave.vue'
+
 export default{
     name: 'Login',
     methods: {
         backToStart(){
             this.$router.push('/')
         }
+    },
+    components:{
+      ButtonBack,
+      ButtonSave
     }
 }
 </script>
@@ -42,7 +49,7 @@ export default{
     margin: 0 20px;
     padding: 30px 0;
     width: 620px;
-    height: 40vh;
+    height: 400px;
     border: 1px solid white;
     border-radius: 15px;
     box-shadow: 6px 5px 8px 0px rgb(0, 0, 0, 0.4);
@@ -58,28 +65,7 @@ export default{
         font-size: 40px;
       }
 
-      button {
-        margin: 30px;
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #fff;
-        background-color: #242424;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-        position: relative;
-        overflow: hidden;
-        transition: all ease 0.3s;
-      }
       
-      button:hover {
-        color: #242424;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      }
     }
     .data-fields {
       display: flex;
@@ -114,26 +100,5 @@ export default{
     }
   }
 }
-.back-btn {
-  position: absolute;
-  top: 0;
-  
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #242424;
-  border: none;
-  border-radius: 15px 5px 5px 5px;
-  cursor: pointer;
-  outline: none;
-  transition: all ease 0.3s;
-}
 
-.back-btn:hover {
-  color: #242424;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 </style>

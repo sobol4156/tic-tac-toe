@@ -20,17 +20,20 @@
     </div>
     <!-- Кнопки возврата в меню или restart -->
     <div v-if="winnerGame" class="btn-winner">
-      <button @click="backToStart" class="btn-menu">
-        Вернуться в главное меню
-      </button>
+      <ButtonBack @click="backToStart" :class="{'gameButtonBack': true}">
+       Главное меню
+      </ButtonBack>
       <button @click="restartGame" class="btn-replay">Сыграть ещё раз</button>
     </div>
   </div>
 </template>
 
 <script>
+import ButtonBack from '@/shared/UI/ButtonBack.vue';
+
 
 export default {
+  
   name: "Game",
   data() {
     return {
@@ -42,6 +45,9 @@ export default {
       user1: true,
       winnerGame: null,
     };
+  },
+  components:{
+    ButtonBack
   },
   methods: {
     handleClick(rowIndex, colIndex) {
@@ -151,22 +157,32 @@ export default {
   display: flex;
   gap: 30px;
 }
-.btn-menu,
-.btn-replay {
-  padding: 10px 20px;
-  background-color: #ca931c;
-  border: none;
-  color: white;
-  border-radius: 4px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+
+
+/* Адаптивка под размерность поля и расположения кнопок */
+@media(width < 480px){
+  .board-square{
+    width: 100px;
+  height: 100px;
+  font-size: 64px;
+  }
+  .btn-winner{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
 }
 
-.btn-menu:hover,
-.btn-replay:hover {
-  background-color: #a0771f;
+@media(width < 330px){
+  .board-square{
+    width: 60px;
+  height: 60px;
+  font-size: 48px;
+  }
+  .btn-winner{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
 }
 </style>

@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Game from "@/views/Game.vue"; // Путь к вашему компоненту для игры
-import Start from "@/views/Start.vue";
-import Registration from "@/views/Registration.vue";
-import Login from "@/views/Login.vue";
-import Options from '@/views/Options.vue'
+import Game from "@/views/mainMenu/Game/Game.vue"; 
+import Start from "@/views/mainMenu/Start.vue";
+import Registration from "@/views/Auth/Registration.vue";
+import Login from "@/views/Auth/Login.vue";
+import Options from '@/views/mainMenu/optionsGame/Options.vue'
 
 const routes = [
   {
