@@ -26,7 +26,7 @@ export default {
   top: 0;
   left: 0;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 15px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
@@ -61,5 +61,7 @@ export default {
   cursor: pointer;
 }
 .gameButtonBack:hover {
+  color: #242424;
+  background-color: #fff;
 }
 </style>

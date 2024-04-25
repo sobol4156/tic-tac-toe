@@ -8,7 +8,7 @@
       <h2>{{ winnerGame }}</h2> 
     </div>
     <!-- Рендер игрового поля -->
-    <div v-for="(row, rowIndex) in board" :key="rowIndex" class="board-row">
+    <div v-for="(row, rowIndex) in board" :key="rowIndex" class="board-row flex">
       <div
         v-for="(cell, colIndex) in row"
         :key="colIndex"
@@ -23,14 +23,14 @@
       <ButtonBack @click="backToStart" :class="{'gameButtonBack': true}">
        Главное меню
       </ButtonBack>
-      <button @click="restartGame" class="btn-replay">Сыграть ещё раз</button>
+      <ButtonRestart @click="restartGame"  :class="{'gameButtonBack': true}">Сыграть ещё раз</ButtonRestart>
     </div>
   </div>
 </template>
 
 <script>
 import ButtonBack from '@/shared/UI/ButtonBack.vue';
-
+import ButtonRestart from '@/shared/UI/ButtonRestart.vue';
 
 export default {
   
@@ -47,11 +47,11 @@ export default {
     };
   },
   components:{
-    ButtonBack
+    ButtonBack,
+    ButtonRestart
   },
   methods: {
     handleClick(rowIndex, colIndex) {
-      console.log(this.board);
       // проверка клетки
       if (!this.board[rowIndex][colIndex]) {
         // делаем ход
@@ -132,9 +132,7 @@ export default {
   height: 100%;
 }
 
-.board-row {
-  display: flex;
-}
+
 
 .board-square {
   background-color: rgb(175, 169, 169);

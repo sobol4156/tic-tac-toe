@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
-    <div class="login-screen flex justify-center">
-      <div class="login-buttons">
-        <button class="login-button" @click="login">Войти</button>
-        <button class="register-button" @click="register">
+    <div class="login-screen flex justify-center relative items-center h-screen">
+      <div class="login-buttons absolute">
+        <ButtonAuth :class="{'btn-auth': true}" @click="login">Войти</ButtonAuth>
+        <ButtonAuth :class="{'btn-auth': true}" @click="register">
           Зарегистрироваться
-        </button>
+        </ButtonAuth>
       </div>
       <div class="game-mode">
         <div
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+import ButtonAuth from '@/shared/UI/ButtonAuth.vue';
 export default {
   name: "Start",
   data() {
@@ -44,6 +44,9 @@ export default {
       showModal: false,
       gameMode: ''
     };
+  },
+  components:{
+    ButtonAuth
   },
   methods: {
     login() {
@@ -72,43 +75,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.login-screen {
-  position: relative;
-  // display: flex;
-  // justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 .login-buttons {
-  position: absolute;
   top: 20px;
   right: 20px;
 }
-
-.login-button,
-.register-button {
-  font-weight: 700;
-  padding: 8px 12px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #242424;
-  color: #fff;
-  cursor: pointer;
-  transition: all ease 0.3s;
-}
-.login-button:hover,
-.register-button:hover {
-
-  background-color: #fff;
-  color: #242424;
-
-}
-
-
 // Кнопки меню
-
 .mode-option {
   text-align: center;
   padding: 10px 20px; 
@@ -124,11 +96,5 @@ export default {
   background-color: #ddd;
   color: #242424;
 }
-
-.mode-option.active {
-  background-color: #4caf50; 
-  color: white; 
-}
-
 
 </style>

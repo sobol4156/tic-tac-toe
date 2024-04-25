@@ -6,13 +6,13 @@
         <h1>Регистрация</h1>
         <div class="data-fields">
           <label for="name"><span>Как вас зовут?</span></label>
-          <input type="text" />
+          <InputAuth :class="{'inputClass': true}" type="text" />
           <label for="name"><span>Адрес электронной почты</span></label>
-          <input type="text" />
+          <InputAuth :class="{'inputClass': true}" type="text" />
           <label for="name"><span>Пароль:</span></label>
-          <input type="password" />
+          <InputAuth :class="{'inputClass': true}" type="password" />
           <label for="name"><span>Подтвердить пароль:</span></label>
-          <input type="password" />
+          <InputAuth :class="{'inputClass': true}" type="password" />
         </div>
         <ButtonSave class="btn">Зарегистрироваться</ButtonSave>
       </div>
@@ -23,6 +23,7 @@
 <script>
 import ButtonBack from '@/shared/UI/ButtonBack.vue';
 import ButtonSave from '@/shared/UI/ButtonSave.vue'
+import InputAuth from '@/shared/UI/InputAuth.vue'
 
 export default {
   name: "Registration",
@@ -33,7 +34,8 @@ export default {
   },
   components:{
     ButtonBack,
-    ButtonSave
+    ButtonSave,
+    InputAuth
   }
 }
 </script>
@@ -78,13 +80,7 @@ export default {
         text-align: center;
         padding: 10px;
       }
-      input {
-        margin: 5px;
-        font-size: 17px;
-        height: 30px;
-        border-radius: 10px;
-        padding-left: 10px;
-      }
+
     }
   }
 }
