@@ -1,23 +1,23 @@
 <template>
-    <button @click="handleClick" :class="btnClass">
-        <slot></slot>
-    </button>
+  <button @click="handleClick" :class="btnClass">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
 export default {
-    props: {
-        btnClass:{
-            type: String,
-            default: ''
-        }
+  props: {
+    btnClass: {
+      type: String,
+      default: "",
     },
-    methods: {
-        handleClick(){
-            this.$emit("click")
-        }
-    }
-}
+  },
+  methods: {
+    handleClick() {
+      this.$emit("click");
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -43,16 +43,16 @@ export default {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.customRadius{
-    border-radius: 14px 5px 5px 5px;
+.customRadius {
+  border-radius: 14px 5px 5px 5px;
 }
 
-.gameButtonBack{
-    padding: 10px 20px;
-    color: #fff;
+.gameButtonBack {
+  padding: 10px 20px;
+  color: #fff;
   background-color: #242424;
   border: none;
-  
+
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
@@ -60,7 +60,6 @@ export default {
   font-size: 16px;
   cursor: pointer;
 }
-.gameButtonBack:hover{
-
+.gameButtonBack:hover {
 }
 </style>
