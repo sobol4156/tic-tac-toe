@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :class="btnClass">
+  <button  :class="btnClass">
     <slot></slot>
   </button>
 </template>
@@ -13,9 +13,7 @@ export default {
     }
   },
   methods: {
-    handleClick () {
-      this.$emit('click')
-    }
+
   }
 }
 </script>
