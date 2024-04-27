@@ -40,32 +40,32 @@
 </template>
 
 <script>
-import ButtonBack from "@/shared/UI/ButtonBack.vue";
-import InputOptions from "@/shared/UI/InputOptions.vue";
+import ButtonBack from '@/shared/UI/ButtonBack.vue'
+import InputOptions from '@/shared/UI/InputOptions.vue'
 
 export default {
-  name: "Options",
-  data() {
+  name: 'OptionsGame',
+  data () {
     return {
       fieldWidth: 10,
-      fieldHeight: 10,
-    };
+      fieldHeight: 10
+    }
   },
   methods: {
-    backToStart() {
-      this.$router.push("/");
+    backToStart () {
+      this.$router.push('/')
     },
-    saveSettings() {
-      console.log("Ширина поля:", this.fieldWidth);
-      console.log("Высота поля:", this.fieldHeight);
+    saveSettings () {
+      console.log('Ширина поля:', this.fieldWidth)
+      console.log('Высота поля:', this.fieldHeight)
       // Логика сохранения настроек...
-    },
+    }
   },
   components: {
     ButtonBack,
-    InputOptions,
-  },
-};
+    InputOptions
+  }
+}
 </script>
 
 <style scoped lang="scss">

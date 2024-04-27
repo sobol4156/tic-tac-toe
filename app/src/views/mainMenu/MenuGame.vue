@@ -10,21 +10,21 @@
       <div class="game-mode">
         <div
           class="mode-option"
-          
+
           @click="setGameMode('single')"
         >
           Одиночный режим
         </div>
         <div
           class="mode-option"
-          
+
           @click="setGameMode('multiplayer')"
         >
           Мультиплеер
         </div>
         <div
           class="mode-option"
-          
+
           @click="setGameMode('free')"
         >
           Свободная игра
@@ -36,42 +36,42 @@
 </template>
 
 <script>
-import ButtonAuth from '@/shared/UI/ButtonAuth.vue';
+import ButtonAuth from '@/shared/UI/ButtonAuth.vue'
 export default {
-  name: "Start",
-  data() {
+  name: 'MenuGame',
+  data () {
     return {
       showModal: false,
       gameMode: ''
-    };
+    }
   },
-  components:{
+  components: {
     ButtonAuth
   },
   methods: {
-    login() {
+    login () {
       // логика входа
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
-    register() {
+    register () {
       //  логика регистрации
-      this.$router.push("/registration");
+      this.$router.push('/registration')
     },
-    startGame(gameMode) {
+    startGame (gameMode) {
       //  логика запуска игры
-      this.$router.push("/game");
+      this.$router.push('/game')
     },
-    openOptions() {
+    openOptions () {
       //  логика открытия настроек
       this.$router.push('/options')
     },
 
-    setGameMode(mode) {
-      this.gameMode = mode;
+    setGameMode (mode) {
+      this.gameMode = mode
       this.startGame(this.gameMode)
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -83,13 +83,13 @@ export default {
 // Кнопки меню
 .mode-option {
   text-align: center;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   margin: 10px;
-  border-radius: 20px; 
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 24px; 
-  color: #b4b0b0; 
+  font-size: 24px;
+  color: #b4b0b0;
 }
 
 .mode-option:hover {

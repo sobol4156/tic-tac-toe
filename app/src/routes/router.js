@@ -1,41 +1,42 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Game from "@/views/mainMenu/Game/Game.vue"; 
-import Registration from "@/views/Auth/Registration.vue";
-import Login from "@/views/Auth/Login.vue";
-import Options from '@/views/mainMenu/optionsGame/Options.vue'
-import Menu from "@/views/mainMenu/Menu.vue";
+import { createRouter, createWebHistory } from 'vue-router'
+
+import MenuGame from '@/views/mainMenu/MenuGame.vue'
+import GameTTT from '@/views/mainMenu/Game/GameTTT.vue'
+import RegistrationProfile from '@/views/Auth/RegistrationProfile.vue'
+import LoginInProfile from '@/views/Auth/LoginInProfile.vue'
+import OptionsGame from '@/views/mainMenu/optionsGame/OptionsGame.vue'
 
 const routes = [
   {
-    path: "/",
-    name: "Menu",
-    component: Menu,
+    path: '/',
+    name: 'MenuGame',
+    component: MenuGame
   },
   {
-    path: "/game",
-    name: "Game",
-    component: Game,
+    path: '/game',
+    name: 'GameTTT',
+    component: GameTTT
   },
   {
-    path: "/registration",
-    name: "Registration",
-    component: Registration,
+    path: '/registration',
+    name: 'RegistrationProfile',
+    component: RegistrationProfile
   },
   {
-    path: "/login",
-    name: "Login",
-    component: Login,
+    path: '/login',
+    name: 'LoginInProfile',
+    component: LoginInProfile
   },
   {
-    path: "/options",
-    name: "Options",
-    component: Options,
-  },
-];
+    path: '/options',
+    name: 'OptionsGame',
+    component: OptionsGame
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router

@@ -26,23 +26,23 @@
 </template>
 
 <script>
-import ButtonBack from "@/shared/UI/ButtonBack.vue";
-import ButtonSave from "@/shared/UI/ButtonSave.vue";
-import InputAuth from "@/shared/UI/InputAuth.vue";
+import ButtonBack from '@/shared/UI/ButtonBack.vue'
+import ButtonSave from '@/shared/UI/ButtonSave.vue'
+import InputAuth from '@/shared/UI/InputAuth.vue'
 
 export default {
-  name: "Login",
+  name: 'LoginInProfile',
   methods: {
-    backToStart() {
-      this.$router.push("/");
-    },
+    backToStart () {
+      this.$router.push('/')
+    }
   },
   components: {
     ButtonBack,
     ButtonSave,
-    InputAuth,
-  },
-};
+    InputAuth
+  }
+}
 </script>
 
 <style lang="scss" scoped>

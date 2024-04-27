@@ -3,23 +3,23 @@
       <slot></slot>
     </button>
   </template>
-  
-  <script>
-  export default {
-    props: {
-      btnClass: {
-        type: String,
-        default: "",
-      },
-    },
-    methods: {
-      handleClick() {
-        this.$emit("click");
-      },
-    },
-  };
-  </script>
-  
+
+<script>
+export default {
+  props: {
+    btnClass: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
+    }
+  }
+}
+</script>
+
   <style scoped lang="scss">
 
   .gameButtonBack {
@@ -27,7 +27,7 @@
     color: #fff;
     background-color: #242424;
     border: none;
-  
+
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
@@ -41,4 +41,3 @@
     background-color: #fff;
   }
   </style>
-  

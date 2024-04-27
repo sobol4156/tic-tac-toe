@@ -9,15 +9,15 @@ export default {
   props: {
     btnClass: {
       type: String,
-      default: "",
-    },
+      default: ''
+    }
   },
   methods: {
-    handleClick() {
-      this.$emit("click");
-    },
-  },
-};
+    handleClick () {
+      this.$emit('click')
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

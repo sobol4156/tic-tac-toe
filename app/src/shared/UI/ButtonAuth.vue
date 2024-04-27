@@ -3,23 +3,23 @@
       <slot></slot>
     </button>
   </template>
-  
-  <script>
-  export default {
-    props: {
-      btnClass: {
-        type: String,
-        default: "",
-      },
-    },
-    methods: {
-      handleClick() {
-        this.$emit("click");
-      },
-    },
-  };
-  </script>
-  
+
+<script>
+export default {
+  props: {
+    btnClass: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
+    }
+  }
+}
+</script>
+
   <style scoped lang="scss">
 .btn-auth
  {
@@ -41,4 +41,3 @@
 
 }
   </style>
-  

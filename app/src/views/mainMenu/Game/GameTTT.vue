@@ -5,7 +5,7 @@
       <h2 class="text-3xl">Победили {{ winnerGame }}</h2>
     </div>
     <div v-if="winnerGame === 'Ничья'">
-      <h2 class="text-3xl">{{ winnerGame }}</h2> 
+      <h2 class="text-3xl">{{ winnerGame }}</h2>
     </div>
     <!-- Рендер игрового поля -->
     <div v-for="(row, rowIndex) in board" :key="rowIndex" class="board-row flex">
@@ -29,43 +29,43 @@
 </template>
 
 <script>
-import ButtonBack from '@/shared/UI/ButtonBack.vue';
-import ButtonRestart from '@/shared/UI/ButtonRestart.vue';
+import ButtonBack from '@/shared/UI/ButtonBack.vue'
+import ButtonRestart from '@/shared/UI/ButtonRestart.vue'
 
 export default {
-  
-  name: "Game",
-  data() {
+
+  name: 'GameTTT',
+  data () {
     return {
       board: [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
       ],
       user1: true,
-      winnerGame: null,
-    };
+      winnerGame: null
+    }
   },
-  components:{
+  components: {
     ButtonBack,
     ButtonRestart
   },
   methods: {
-    handleClick(rowIndex, colIndex) {
+    handleClick (rowIndex, colIndex) {
       // проверка клетки
       if (!this.board[rowIndex][colIndex]) {
         // делаем ход
-        this.board[rowIndex][colIndex] = this.user1 ? "X" : "O";
+        this.board[rowIndex][colIndex] = this.user1 ? 'X' : 'O'
 
-        this.user1 = !this.user1;
+        this.user1 = !this.user1
 
-        const winner = this.checkWin();
+        const winner = this.checkWin()
         if (winner) {
-          this.winnerGame = winner;
+          this.winnerGame = winner
         }
       }
     },
-    checkWin() {
+    checkWin () {
       const lines = [
         // Горизонтальные линии
         [0, 1, 2],
@@ -77,11 +77,11 @@ export default {
         [2, 5, 8],
         // Диагонали
         [0, 4, 8],
-        [2, 4, 6],
-      ];
+        [2, 4, 6]
+      ]
       // Проверка победы
       for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
+        const [a, b, c] = lines[i]
         if (
           this.board[Math.floor(a / 3)][a % 3] &&
           this.board[Math.floor(a / 3)][a % 3] ===
@@ -89,38 +89,37 @@ export default {
           this.board[Math.floor(a / 3)][a % 3] ===
             this.board[Math.floor(c / 3)][c % 3]
         ) {
-          return this.board[Math.floor(a / 3)][a % 3];
+          return this.board[Math.floor(a / 3)][a % 3]
         }
-        
       }
       // Проверка пустых клеток
-  let emptyCells = 0;
-  for (let row of this.board) {
-    for (let cell of row) {
-      if (cell === "") {
-        emptyCells++;
+      let emptyCells = 0
+      for (const row of this.board) {
+        for (const cell of row) {
+          if (cell === '') {
+            emptyCells++
+          }
+        }
       }
+      if (emptyCells === 0) {
+        return 'Ничья'
+      }
+
+      return null
+    },
+    backToStart () {
+      this.$router.push('/')
+    },
+    restartGame () {
+      this.board = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+      ]
+      this.winnerGame = null
     }
   }
-  if (emptyCells === 0) {
-    return "Ничья";
-  }
-
-      return null;
-    },
-    backToStart() {
-      this.$router.push("/");
-    },
-    restartGame() {
-      this.board = [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ];
-      this.winnerGame = null;
-    },
-  },
-};
+}
 </script>
 
 <style scoped>
