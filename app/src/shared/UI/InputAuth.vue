@@ -5,7 +5,7 @@
 <script>
 export default {
   props: ['modelValue', 'inputClass'],
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue']
 }
 </script>
 

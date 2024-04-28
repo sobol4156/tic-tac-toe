@@ -35,62 +35,60 @@
         <ButtonSave @click="registrationButton" class="btn"
           >Зарегистрироваться</ButtonSave
         >
-        
+
       </div>
     </div>
   </div>
 </template>
 
 <script >
-import axios from "axios";
+import axios from 'axios'
 
-import ButtonBack from "@/shared/UI/ButtonBack.vue";
-import ButtonSave from "@/shared/UI/ButtonSave.vue";
-import InputAuth from "@/shared/UI/InputAuth.vue";
+import ButtonBack from '@/shared/UI/ButtonBack.vue'
+import ButtonSave from '@/shared/UI/ButtonSave.vue'
+import InputAuth from '@/shared/UI/InputAuth.vue'
 
 export default {
-  name: "RegistrationProfile",
-  data() {
+  name: 'RegistrationProfile',
+  data () {
     return {
-      name: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-    };
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
+    }
   },
   methods: {
-    backToStart() {
-      this.$router.push("/");
+    backToStart () {
+      this.$router.push('/')
     },
-    //Отправка данных для регистрации юзера 
-    async registrationButton() {
+    // Отправка данных для регистрации юзера
+    async registrationButton () {
       try {
-  
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/register",
+          'http://127.0.0.1:8000/api/register',
           {
             name: this.name,
             email: this.email,
             password: this.password,
-            password_confirmation: this.password_confirmation,
+            password_confirmation: this.password_confirmation
           }
-        );
-        console.log(response.status);
-        if(response.status === 204){
+        )
+        console.log(response.status)
+        if (response.status === 204) {
           this.backToStart()
-      }
+        }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-
-    },
+    }
   },
   components: {
     ButtonBack,
     ButtonSave,
-    InputAuth,
-  },
-};
+    InputAuth
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -104,7 +102,6 @@ export default {
   border-radius: 15px;
   box-shadow: 6px 5px 8px 0px rgb(0, 0, 0, 0.4);
   background-color: #4b4848;
-  
 
   label {
     text-align: center;

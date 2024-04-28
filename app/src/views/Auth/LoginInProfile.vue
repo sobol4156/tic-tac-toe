@@ -33,8 +33,8 @@ import InputAuth from '@/shared/UI/InputAuth.vue'
 
 export default {
   name: 'LoginInProfile',
-  data(){
-    return{
+  data () {
+    return {
       login: '',
       password: ''
     }
@@ -43,27 +43,25 @@ export default {
     backToStart () {
       this.$router.push('/')
     },
-    async loginButton() {
+    async loginButton () {
       try {
-  
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/login",
+          'http://127.0.0.1:8000/api/login',
           {
             email: this.login,
-            password: this.password,
+            password: this.password
           }
-        );
-        
-        if(response.status === 200){
+        )
+
+        if (response.status === 200) {
           localStorage.setItem('token', response.data.token)
           localStorage.setItem('userName', response.data.name)
           this.backToStart()
-      }
+        }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-
-    },
+    }
   },
   components: {
     ButtonBack,
