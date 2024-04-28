@@ -62,7 +62,7 @@ export default {
     backToStart() {
       this.$router.push("/");
     },
-    //Отправка данных для регистрации юзера
+    //Отправка данных для регистрации юзера 
     async registrationButton() {
       try {
   
