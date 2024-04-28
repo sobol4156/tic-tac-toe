@@ -8,8 +8,8 @@
         </ButtonAuth>
       </div>
       <div v-else class="login-buttons absolute flex items-center gap-5">
-        <div>
-          <img src="../../shared/assets/img/user.png" class="cursor-pointer" alt="Profile">
+        <div >
+          <img src="../../shared/assets/img/user.png"  class="cursor-pointer" alt="Profile">
           <span class="absolute right-15 text-start opacity-40 cursor-default">Добро пожаловать {{ nameUser }}</span>
         </div>
         <ButtonAuth :class="{'btn-auth': true}" @click="exit">Выйти</ButtonAuth>
@@ -25,8 +25,8 @@
         </div>
         <div
           class="mode-option"
-
-          @click="setGameMode('multiplayer')"
+          :class="!tokenLogin? 'mode-blocked': ''"
+          @click="tokenLogin && setGameMode('multiplayer')"
         >
           Мультиплеер
         </div>
@@ -119,5 +119,14 @@ export default {
   background-color: #ddd;
   color: #242424;
 }
-
+// если не вошёл в систему
+.mode-blocked{
+  cursor: default;
+  opacity: 0.5;
+  
+}
+.mode-blocked:hover{
+  background-color: #242424;
+  color: #ddd;
+}
 </style>
