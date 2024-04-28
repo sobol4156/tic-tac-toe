@@ -11,14 +11,14 @@
         </div>
         <div class="info-blocks flex flex-col items-center p-2.5">
           <h1 class="text-4xl">Вход</h1>
-          <div class="data-fields flex flex-col m-0 text-xl">
+          <div class="data-fields flex flex-col m-0 text-xl ">
             <label for="name"><span>Логин</span></label>
-            <InputAuth :class="{ inputClass: true }" type="text" />
+            <InputAuth v-model="login" :class="{ inputClass: true }" type="text" />
             <label for="name"><span>Пароль:</span></label>
-            <InputAuth :class="{ inputClass: true }" type="password" />
+            <InputAuth v-model="password" :class="{ inputClass: true }" type="password" />
             <a href="#" class="forgot-password text-center my-2.5 text-base text-[#ccc] no-underline cursor-pointer transition-all hover:text-white">Забыли пароль?</a>
           </div>
-          <ButtonSave>Войти</ButtonSave>
+          <ButtonSave @click="loginButton">Войти</ButtonSave>
         </div>
       </div>
     </div>
@@ -26,16 +26,42 @@
 </template>
 
 <script>
+import axios from 'axios'
 import ButtonBack from '@/shared/UI/ButtonBack.vue'
 import ButtonSave from '@/shared/UI/ButtonSave.vue'
 import InputAuth from '@/shared/UI/InputAuth.vue'
 
 export default {
   name: 'LoginInProfile',
+  data(){
+    return{
+      login: '',
+      password: ''
+    }
+  },
   methods: {
     backToStart () {
       this.$router.push('/')
-    }
+    },
+    async loginButton() {
+      try {
+  
+        const response = await axios.post(
+          "http://127.0.0.1:8000/api/login",
+          {
+            email: this.login,
+            password: this.password,
+          }
+        );
+        console.log(response.status);
+        if(response.status === 200){
+          this.backToStart()
+      }
+      } catch (error) {
+        console.log(error);
+      }
+
+    },
   },
   components: {
     ButtonBack,

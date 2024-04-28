@@ -16,6 +16,7 @@ export default {
         height: 30px;
         border-radius: 10px;
         padding-left: 10px;
+        color: #484848;
     }
 
   </style>

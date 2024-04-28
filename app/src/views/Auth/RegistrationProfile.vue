@@ -10,7 +10,7 @@
       </div>
       <div class="info-blocks flex flex-col items-center py-2.5 text-xl">
         <h1 class="text-4xl">Регистрация</h1>
-        <div class="data-fields flex flex-col m-3.5 text-[#484848]">
+        <div class="data-fields flex flex-col m-3.5 ">
           <label for="name"><span>Как вас зовут?</span></label>
           <InputAuth v-model="name" :class="{ 'inputClass': true }" type="text" />
           <label for="email"><span>Адрес электронной почты</span></label>
@@ -104,6 +104,7 @@ export default {
   border-radius: 15px;
   box-shadow: 6px 5px 8px 0px rgb(0, 0, 0, 0.4);
   background-color: #4b4848;
+  
 
   label {
     text-align: center;
