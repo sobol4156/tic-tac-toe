@@ -53,8 +53,10 @@ export default {
             password: this.password,
           }
         );
-        console.log(response.status);
+        
         if(response.status === 200){
+          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('userName', response.data.name)
           this.backToStart()
       }
       } catch (error) {

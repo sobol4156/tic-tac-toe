@@ -1,11 +1,19 @@
 <template>
   <div class="wrapper">
     <div class="login-screen flex justify-center relative items-center h-screen">
-      <div class="login-buttons absolute">
+      <div v-if="!tokenLogin" class="login-buttons absolute">
         <ButtonAuth :class="{'btn-auth': true}" @click="login">Войти</ButtonAuth>
         <ButtonAuth :class="{'btn-auth': true}" @click="register">
           Зарегистрироваться
         </ButtonAuth>
+      </div>
+      <div v-else class="login-buttons absolute flex items-center gap-5">
+        <div>
+          <img src="../../shared/assets/img/user.png" class="cursor-pointer" alt="Profile">
+          <span class="absolute right-15 text-start opacity-40 cursor-default">Добро пожаловать {{ nameUser }}</span>
+        </div>
+        <ButtonAuth :class="{'btn-auth': true}" @click="exit">Выйти</ButtonAuth>
+
       </div>
       <div class="game-mode">
         <div
@@ -42,7 +50,9 @@ export default {
   data () {
     return {
       showModal: false,
-      gameMode: ''
+      gameMode: '',
+      tokenLogin: '',
+      nameUser: ''
     }
   },
   components: {
@@ -54,8 +64,15 @@ export default {
       this.$router.push('/login')
     },
     register () {
-      //  логика регистрации
+      
       this.$router.push('/registration')
+    },
+    //  логика выхода из профиля
+    exit(){
+      localStorage.removeItem('token')
+      localStorage.removeItem('userName')
+      this.tokenLogin = ''
+      this.nameUser= ''
     },
     startGame (gameMode) {
       //  логика запуска игры
@@ -69,6 +86,12 @@ export default {
     setGameMode (mode) {
       this.gameMode = mode
       this.startGame(this.gameMode)
+    }
+  },
+  mounted(){
+    if(localStorage.getItem('token')){
+      this.tokenLogin = localStorage.getItem('token')
+      this.nameUser = localStorage.getItem('userName')
     }
   }
 }
