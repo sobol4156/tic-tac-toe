@@ -42,7 +42,7 @@
 </template>
 
 <script >
-import axios from 'axios'
+import { RegisterUser } from '@/shared/api'
 
 import ButtonBack from '@/shared/UI/ButtonBack.vue'
 import ButtonSave from '@/shared/UI/ButtonSave.vue'
@@ -65,8 +65,7 @@ export default {
     // Отправка данных для регистрации юзера
     async registrationButton () {
       try {
-        const response = await axios.post(
-          'http://127.0.0.1:8000/api/register',
+        const response = await RegisterUser(
           {
             name: this.name,
             email: this.email,

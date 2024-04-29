@@ -11,12 +11,24 @@
         </div>
         <div class="info-blocks flex flex-col items-center p-2.5">
           <h1 class="text-4xl">Вход</h1>
-          <div class="data-fields flex flex-col m-0 text-xl ">
+          <div class="data-fields flex flex-col m-0 text-xl">
             <label for="name"><span>Логин</span></label>
-            <InputAuth v-model="login" :class="{ inputClass: true }" type="text" />
+            <InputAuth
+              v-model="login"
+              :class="{ inputClass: true }"
+              type="text"
+            />
             <label for="name"><span>Пароль:</span></label>
-            <InputAuth v-model="password" :class="{ inputClass: true }" type="password" />
-            <a href="#" class="forgot-password text-center my-2.5 text-base text-[#ccc] no-underline cursor-pointer transition-all hover:text-white">Забыли пароль?</a>
+            <InputAuth
+              v-model="password"
+              :class="{ inputClass: true }"
+              type="password"
+            />
+            <a
+              href="#"
+              class="forgot-password text-center my-2.5 text-base text-[#ccc] no-underline cursor-pointer transition-all hover:text-white"
+              >Забыли пароль?</a
+            >
           </div>
           <ButtonSave @click="loginButton">Войти</ButtonSave>
         </div>
@@ -26,49 +38,47 @@
 </template>
 
 <script>
-import axios from 'axios'
-import ButtonBack from '@/shared/UI/ButtonBack.vue'
-import ButtonSave from '@/shared/UI/ButtonSave.vue'
-import InputAuth from '@/shared/UI/InputAuth.vue'
+import { loginUser } from "@/shared/api";
+import ButtonBack from "@/shared/UI/ButtonBack.vue";
+import ButtonSave from "@/shared/UI/ButtonSave.vue";
+import InputAuth from "@/shared/UI/InputAuth.vue";
 
 export default {
-  name: 'LoginInProfile',
-  data () {
+  name: "LoginInProfile",
+  data() {
     return {
-      login: '',
-      password: ''
-    }
+      login: "",
+      password: "",
+    };
   },
   methods: {
-    backToStart () {
-      this.$router.push('/')
+    backToStart() {
+      this.$router.push("/");
     },
-    async loginButton () {
+    async loginButton() {
+
       try {
-        const response = await axios.post(
-          'http://127.0.0.1:8000/api/login',
-          {
-            email: this.login,
-            password: this.password
-          }
-        )
+        const response = await loginUser({
+          email: this.login,
+          password: this.password,
+        });
 
         if (response.status === 200) {
-          localStorage.setItem('token', response.data.token)
-          localStorage.setItem('userName', response.data.name)
-          this.backToStart()
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("userName", response.data.name);
+          this.backToStart();
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    },
   },
   components: {
     ButtonBack,
     ButtonSave,
-    InputAuth
-  }
-}
+    InputAuth,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
