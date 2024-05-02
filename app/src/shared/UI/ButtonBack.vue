@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :class="btnClass">
+  <button :class="btnClass">
     <slot></slot>
   </button>
 </template>
@@ -8,15 +8,10 @@
 export default {
   props: {
     btnClass: {
-      type: String,
-      default: ''
+      type: String
     }
   },
-  methods: {
-    handleClick () {
-      this.$emit('click')
-    }
-  }
+  methods: {}
 }
 </script>
 

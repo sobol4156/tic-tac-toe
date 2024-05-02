@@ -12,30 +12,73 @@
         <h1 class="text-4xl">Регистрация</h1>
         <div class="data-fields flex flex-col m-3.5">
           <label for="name"><span>Как вас зовут?</span></label>
-          <InputAuth :class="{ inputClass: true }" type="text" />
-          <label for="name"><span>Адрес электронной почты</span></label>
-          <InputAuth :class="{ inputClass: true }" type="text" />
-          <label for="name"><span>Пароль:</span></label>
-          <InputAuth :class="{ inputClass: true }" type="password" />
-          <label for="name"><span>Подтвердить пароль:</span></label>
-          <InputAuth :class="{ inputClass: true }" type="password" />
+          <InputAuth v-model="name" :class="{ inputClass: true }" type="text" />
+          <label for="email"><span>Адрес электронной почты</span></label>
+          <InputAuth
+            v-model="email"
+            :class="{ inputClass: true }"
+            type="text"
+          />
+          <label for="password"><span>Пароль:</span></label>
+          <InputAuth
+            v-model="password"
+            :class="{ inputClass: true }"
+            type="password"
+          />
+          <label for="password_confirmation"
+            ><span>Подтвердить пароль:</span></label
+          >
+          <InputAuth
+            v-model="password_confirmation"
+            :class="{ inputClass: true }"
+            type="password"
+          />
         </div>
-        <ButtonSave class="btn">Зарегистрироваться</ButtonSave>
+        <ButtonSave @click="registrationButton" class="btn"
+          >Зарегистрироваться
+        </ButtonSave>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { RegisterUser } from '@/shared/api'
+
 import ButtonBack from '@/shared/UI/ButtonBack.vue'
 import ButtonSave from '@/shared/UI/ButtonSave.vue'
 import InputAuth from '@/shared/UI/InputAuth.vue'
 
 export default {
   name: 'RegistrationProfile',
+  data () {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
+    }
+  },
   methods: {
     backToStart () {
       this.$router.push('/')
+    },
+    // Отправка данных для регистрации юзера
+    async registrationButton () {
+      try {
+        const response = await RegisterUser({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation
+        })
+        console.log(response.status)
+        if (response.status === 204) {
+          this.backToStart()
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
   components: {
