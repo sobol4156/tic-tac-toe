@@ -1,26 +1,22 @@
 <template>
-    <button :class="btnClass">
-      <slot></slot>
-    </button>
-  </template>
+  <button :class="btnClass">
+    <slot></slot>
+  </button>
+</template>
 
 <script>
 export default {
   props: {
     btnClass: {
-      type: String,
-      default: ''
+      type: String
     }
   },
-  methods: {
-
-  }
+  methods: {}
 }
 </script>
 
-  <style scoped lang="scss">
-.btn-auth
- {
+<style scoped lang="scss">
+.btn-auth {
   font-weight: 700;
   padding: 8px 12px;
   margin-left: 10px;
@@ -33,9 +29,7 @@ export default {
 }
 
 .btn-auth:hover {
-
   background-color: #fff;
   color: #242424;
-
 }
-  </style>
+</style>

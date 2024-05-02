@@ -10,38 +10,39 @@
       </div>
       <div class="info-blocks flex flex-col items-center py-2.5 text-xl">
         <h1 class="text-4xl">Регистрация</h1>
-        <div class="data-fields flex flex-col m-3.5 ">
+        <div class="data-fields flex flex-col m-3.5">
           <label for="name"><span>Как вас зовут?</span></label>
-          <InputAuth v-model="name" :class="{ 'inputClass': true }" type="text" />
+          <InputAuth v-model="name" :class="{ inputClass: true }" type="text" />
           <label for="email"><span>Адрес электронной почты</span></label>
           <InputAuth
-          v-model="email"
-            :class="{ 'inputClass': true }"
+            v-model="email"
+            :class="{ inputClass: true }"
             type="text"
           />
           <label for="password"><span>Пароль:</span></label>
           <InputAuth
             v-model="password"
-            :class="{ 'inputClass': true }"
+            :class="{ inputClass: true }"
             type="password"
           />
-          <label for="password_confirmation"><span>Подтвердить пароль:</span></label>
+          <label for="password_confirmation"
+            ><span>Подтвердить пароль:</span></label
+          >
           <InputAuth
-          v-model="password_confirmation"
-            :class="{ 'inputClass': true }"
+            v-model="password_confirmation"
+            :class="{ inputClass: true }"
             type="password"
           />
         </div>
         <ButtonSave @click="registrationButton" class="btn"
-          >Зарегистрироваться</ButtonSave
-        >
-
+          >Зарегистрироваться
+        </ButtonSave>
       </div>
     </div>
   </div>
 </template>
 
-<script >
+<script>
 import { RegisterUser } from '@/shared/api'
 
 import ButtonBack from '@/shared/UI/ButtonBack.vue'
@@ -65,14 +66,12 @@ export default {
     // Отправка данных для регистрации юзера
     async registrationButton () {
       try {
-        const response = await RegisterUser(
-          {
-            name: this.name,
-            email: this.email,
-            password: this.password,
-            password_confirmation: this.password_confirmation
-          }
-        )
+        const response = await RegisterUser({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation
+        })
         console.log(response.status)
         if (response.status === 204) {
           this.backToStart()
