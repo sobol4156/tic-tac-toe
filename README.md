@@ -2,6 +2,8 @@
 
 Игра крестики-нолики онлайн
 
+![TTT-Image](https://play-lh.googleusercontent.com/eyk1guybqKVomFJm5okzo58kokRbGilsXQJaWRMp44Pz7mqTSq9RTx7BGGswTgz7sw)
+
 ## Запуск проекта
 
 ### Требования
