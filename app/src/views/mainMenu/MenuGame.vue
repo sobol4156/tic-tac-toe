@@ -106,7 +106,7 @@ export default {
   top: 20px;
   right: 20px;
 }
-// Кнопки меню
+// Кнопки меню 
 .mode-option {
   text-align: center;
   padding: 10px 20px;
