@@ -5,8 +5,8 @@
     >
       <div v-if="!tokenLogin" class="login-buttons absolute">
         <ButtonAuth :class="{ 'btn-auth': true }" @click="login"
-          >Войти</ButtonAuth
-        >
+          >Войти
+        </ButtonAuth>
         <ButtonAuth :class="{ 'btn-auth': true }" @click="register">
           Зарегистрироваться
         </ButtonAuth>
@@ -49,56 +49,56 @@
 </template>
 
 <script>
-import ButtonAuth from '@/shared/UI/ButtonAuth.vue'
+import ButtonAuth from "@/shared/UI/ButtonAuth.vue";
 export default {
-  name: 'MenuGame',
-  data () {
+  name: "MenuGame",
+  data() {
     return {
       showModal: false,
-      gameMode: '',
-      tokenLogin: '',
-      nameUser: ''
-    }
+      gameMode: "",
+      tokenLogin: "",
+      nameUser: "",
+    };
   },
   components: {
-    ButtonAuth
+    ButtonAuth,
   },
   methods: {
-    login () {
+    login() {
       // логика входа
-      this.$router.push('/login')
+      this.$router.push("/login");
     },
-    register () {
-      this.$router.push('/registration')
+    register() {
+      this.$router.push("/registration");
     },
     //  логика выхода из профиля
-    exit () {
-      localStorage.removeItem('token')
-      localStorage.removeItem('userName')
-      this.tokenLogin = ''
-      this.nameUser = ''
+    exit() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userName");
+      this.tokenLogin = "";
+      this.nameUser = "";
     },
-    startGame (gameMode) {
+    startGame(gameMode) {
       //  логика запуска игры
-      this.$router.push('/game')
+      this.$router.push("/game");
     },
-    openOptions () {
+    openOptions() {
       //  логика открытия настроек
-      this.$router.push('/options')
+      this.$router.push("/options");
     },
 
-    setGameMode (mode) {
-      this.gameMode = mode
-      this.startGame(this.gameMode)
+    setGameMode(mode) {
+      this.gameMode = mode;
+      this.startGame(this.gameMode);
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("token")) {
+      this.tokenLogin = localStorage.getItem("token");
+      this.nameUser = localStorage.getItem("userName");
     }
   },
-  mounted () {
-    if (localStorage.getItem('token')) {
-      this.tokenLogin = localStorage.getItem('token')
-      this.nameUser = localStorage.getItem('userName')
-    }
-  }
-}
+};
 </script>
 
 <style scoped lang="scss">
